@@ -1,7 +1,7 @@
 # Relatório Cirúrgico Completo - Centro Oftalmológico
 
 ## Descrição
-Este é um sistema web para geração de relatórios cirúrgicos completos do Centro Oftalmológico de Caratinga. A aplicação permite preencher formulários detalhados de procedimentos cirúrgicos oftalmológicos, incluindo informações do paciente, detalhes da cirurgia, materiais utilizados, medicamentos administrados e monitoramento anestésico.
+Este é um sistema web para geração de relatórios cirúrgicos. A aplicação permite preencher formulários detalhados de procedimentos cirúrgicos oftalmológicos, incluindo informações do paciente, detalhes da cirurgia, materiais utilizados, medicamentos administrados e monitoramento anestésico.
 
 ## Funcionalidades
 
