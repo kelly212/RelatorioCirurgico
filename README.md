@@ -172,10 +172,6 @@ O sistema pode ser facilmente personalizado através de:
 - Recomenda-se salvar o relatório gerado em PDF para arquivamento
 - Os códigos de medicamentos seguem padrão interno da instituição
 
-## Autor
-
-Sistema desenvolvido para o Centro Oftalmológico de Caratinga.
 
 ## Licença
-
 Uso interno da instituição.
