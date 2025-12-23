@@ -182,7 +182,6 @@ const dados = {
       {codigo: 90175212, descricao: "Miostat 1,5 ml (Carbachol)", qtde: 1, und: "fa", valorUnitario: 33.96, valorTotal: 33.96},
       {codigo: 90297512, descricao: "Mydriacyl 1% Colírio 5 ml", qtde: 10, und: "gts", valorUnitario: 0.11, valorTotal: 1.10},
       {codigo: 90069765, descricao: "Nimesulida 100 mg", qtde: 1, und: "com", valorUnitario: 0.50, valorTotal: 0.50},
-      {codigo: 'MED30', descricao: "Oclusor", qtde: 1, und: "un", valorUnitario: null, valorTotal: null},
       {codigo: 90302370, descricao: "Propovan 10 MG/ML (Propofol)", qtde: 1, und: "amp", valorUnitario: 11.42, valorTotal: 11.42},
       {codigo: 90433068, descricao: "Regencel 10.000 UI/G (Epitezan)", qtde: 1, und: "mg", valorUnitario: 4.53, valorTotal: 4.53},
       {codigo: 90123255, descricao: "Solução Ringer com Lactado 500 ml", qtde: 1, und: "bols", valorUnitario: 9.24, valorTotal: 9.24},
@@ -193,7 +192,6 @@ const dados = {
       {codigo: 'MED33', descricao: "Soro Glicosado 250ml", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
       {codigo: 'MED34', descricao: "Soro Glicosado 500ml", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
       {codigo: 'MED35', descricao: "Soro Glicosado 1000ml", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
-      {codigo: 'MED42', descricao: "Equipo soro eurofix", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
       {codigo: 'MED36', descricao: "Sol Manitol 20% 250ml", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
       {codigo: 'MED37', descricao: "Sulfato de Atropina 0,5mg", qtde: 1, und: "amp", valorUnitario: null, valorTotal: null},
       {codigo: 'MED38', descricao: "Sulfato de Efedrina 1ml", qtde: 1, und: "amp", valorUnitario: null, valorTotal: null},
@@ -201,6 +199,8 @@ const dados = {
       {codigo: 'MED40', descricao: "Tylenol 750 mg", qtde: 1, und: "com", valorUnitario: null, valorTotal: null},
       // { codigo: 90524845, descricao: "Valium Diazepam 5 mg", qtde: 1, und: "com", valorUnitario: 0.73, valorTotal: 0.73 },
       {codigo: 'MED41', descricao: "Vigadexa Colírio", qtde: 1, und: "gts", valorUnitario: null, valorTotal: null},
+      {codigo: 'MED45', descricao: "Dipirona ", qtde: 1, und: "gts", valorUnitario: null, valorTotal: null},
+      {codigo: 'MED44', descricao: "Ringuer Lactado 500ml", qtde: 1, und: "gts", valorUnitario: null, valorTotal: null},
       {codigo: 90297610, descricao: "Vigamox 5 mg/ml", qtde: 3, und: "gts", valorUnitario: 0.35, valorTotal: 1.05},
       {codigo: 90397916, descricao: "Xylocaína 50 MG/G", qtde: 1, und: "g", valorUnitario: 0.97, valorTotal: 0.97}
    ],
@@ -225,6 +225,7 @@ const dados = {
       {codigo: 1900588440, descricao: "Cotonete", qtde: 10, und: "un", valorUnitario: 0.11, valorTotal: 1.10},
       {codigo: 70223750, descricao: "Equipo p/ inf mult polifix", qtde: 1, und: "un", valorUnitario: 17.28, valorTotal: 17.28},
       {codigo: 'MAT42', descricao: "Equipo p/ soro microfix", qtde: 1, und: "un", valorUnitario: 17.28, valorTotal: 17.28},
+      {codigo: 'MAT43', descricao: "Equipo soro eurofix", qtde: 1, und: "fr", valorUnitario: null, valorTotal: null},
       {codigo: 'MAT14', descricao: "Equipo p/ Soro", qtde: 1, und: "un", valorUnitario: null, valorTotal: null},
       {codigo: 1902758350, descricao: "Escova de assepsia", qtde: 2, und: "un", valorUnitario: 6.68, valorTotal: 13.36},
       {codigo: 'MAT15', descricao: "Esparadrapo (20cm)", qtde: 1, und: "rl", valorUnitario: null, valorTotal: null},
@@ -267,7 +268,7 @@ const dados = {
       {codigo: 'MAT39', descricao: "Sonda Uretral n°", qtde: 1, und: "un", valorUnitario: null, valorTotal: null},
       {codigo: 'MAT40', descricao: "Torneira Descartável 3 vias", qtde: 1, und: "un", valorUnitario: null, valorTotal: null},
       {codigo: 1900588466, descricao: "Touca descartável", qtde: 3, und: "un", valorUnitario: 0.08, valorTotal: 0.24},
-      {codigo: 'MAT41', descricao: "Tubo Endotraqueal", qtde: 1, und: "un", valorUnitario: null, valorTotal: null}
+      {codigo: 'MAT41', descricao: "Tubo Endotraqueal", qtde: 1, und: "un", valorUnitario: null, valorTotal: null},
    ],
 
    controlado: [
@@ -691,7 +692,7 @@ const receccao = {
       {codigo: 1900180734, qtde: 1}, // Agulha descartável 13x4,5
       {codigo: 1900588440, qtde: 40},// Cotonete
       {codigo: 70223750, qtde: 1},   // Equipo p/ inf mult polifix
-      {codigo: 'MAT42', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5
       {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
       {codigo: 1900241334, qtde: 2}, // Luva 7,0
@@ -724,7 +725,7 @@ const rec_vias_lacrimais = {
       {codigo: 1900180734, qtde: 1}, // Agulha descartável 13x4,5
       {codigo: 1900588440, qtde: 10},// Cotonete
       {codigo: 70223750, qtde: 1},   // Equipo p/ inf mult polifix
-      {codigo: 'MAT42', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5
       {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
       {codigo: 70360812, qtde: 1},   // Lâmina de bisturi 15
@@ -802,9 +803,60 @@ const ectropio = {
       {codigo: 1900119725, qtde: 1}, // Seringa 10 ml c/ ag
       {codigo: 1900588466, qtde: 3}, // Touca descartável
       {codigo: 1900588806, qtde: 1}, // Oclusor Oftálmico Estéril
-      // { codigo: 1900133884, qtde: 1 }, // Fio seda preta oftalmo 4-0
-      // { codigo: 1900134260, qtde: 1 }, // Fio mononylon 6-0
-      // { codigo: 1900134520, qtde: 1 }  // Fio Vicryl Oftalm Violeta 8-0
+   ],
+
+   fios: [
+      {codigo: 1900133884, qtde: 1}, // Fio seda preta oftalmo 4-0
+      {codigo: 1900134260, qtde: 1}, // Fio mononylon 6-0
+      {codigo: 1900134520, qtde: 1}  // Fio Vicryl Oftalm Violeta 8-0
+   ],
+   taxas: [
+      {codigo: "60023112", qtde: 1},
+   ]
+};
+
+const entropio = {
+   equipamentos: [
+      {codigo: "EQ09", qtde: 1},
+      {codigo: "EQ11", qtde: 1},
+      {codigo: "EQ13", qtde: 1}
+   ],
+   controlado: [
+      {codigo: 90524845, qtde: 1, und: "com",} // Valium (código original do medicamento)
+   ],
+   profissional: {codigo: 17311038906},//Dr. Aldery de Oliveira
+   // { codigo: 17311032299}//Dr. Amauri de Oliveira
+   medicamentos: [
+      {codigo: 90122704, qtde: 1}, // Água Destilada 1000 ml
+      {codigo: 90003551, qtde: 1}, // Dexametasona 4 mg/ml
+      {codigo: 90008375, qtde: 1}, // Keflin Neutro
+      {codigo: 90008332, qtde: 1}, // Kefazol 1g
+      {codigo: 90257570, qtde: 5}, // Lidocaína Geleia 2% 30 mg
+      {codigo: 90019881, qtde: 1}, // Soro Fisiológico 250 ml
+      {codigo: 90099753, qtde: 10},// Lidocaína 2% CV 20 ml
+      {codigo: 90047494, qtde: 10},// Marcaína 0,75% 20 ml (Novabupi)
+      {codigo: 90297300, qtde: 10},// Anestalcon Colírio 5 ml
+      {codigo: 90069765, qtde: 1}, // Nimesulida 100 mg
+      // { codigo: 90524845, qtde: 1 }  // Valium Diazepam 5 mg
+   ],
+   materiais: [
+      {codigo: 1900180734, qtde: 2}, // Agulha descartável 13x4,5
+      {codigo: 1900101265, qtde: 1}, // Campo cirúrgico fenestrado
+      {codigo: 1900049204, qtde: 2}, // Campo cirúrgico
+      {codigo: 1900588440, qtde: 10},// Cotonete
+      {codigo: 70223750, qtde: 2},   // Equipo p/ inf mult polifix
+      {codigo: 1902758350, qtde: 2}, // Escova de assepsia
+      {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5
+      {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
+      {codigo: 70360812, qtde: 1},   // Lâmina de bisturi 15
+      {codigo: 1900241334, qtde: 2}, // Luva 7,0
+      {codigo: 1900591572, qtde: 3}, // Máscara
+      {codigo: 1900651117, qtde: 1}, // Scalp 21 g
+      {codigo: 1900119709, qtde: 1}, // Seringa 01 ml c/ ag
+      {codigo: 1900119733, qtde: 2}, // Seringa 05 ml c/ ag
+      {codigo: 1900119725, qtde: 1}, // Seringa 10 ml c/ ag
+      {codigo: 1900588466, qtde: 3}, // Touca descartável
+      {codigo: 1900588806, qtde: 1}, // Oclusor Oftálmico Estéril
    ],
 
    fios: [
@@ -1025,7 +1077,7 @@ const calazio = {
       {codigo: 1900180734, qtde: 1}, // Agulha descartável 13x4,5
       {codigo: 1900588440, qtde: 10},// Cotonete
       {codigo: 70223750, qtde: 1},   // Equipo p/ inf mult polifix
-      {codigo: 'MAT42', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5 (iris)
       {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
       {codigo: 70360812, qtde: 1},   // Lâmina de bisturi 15
@@ -1076,7 +1128,7 @@ const tumor_conjuntiva = {
       {codigo: 1900180734, qtde: 1}, // Agulha descartável 13x4,5
       {codigo: 1900588440, qtde: 10},// Cotonete
       {codigo: 70223750, qtde: 1},   // Equipo p/ inf mult polifix
-      {codigo: 'MAT42', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5 (iris)
       {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
       {codigo: 70360812, qtde: 1},   // Lâmina de bisturi 15
@@ -1215,7 +1267,7 @@ const estrabismo = {
       {codigo: 1900180734, qtde: 2}, // Agulha descartável 13x4,5
       {codigo: 1900588440, qtde: 10},// Cotonete
       {codigo: 70223750, qtde: 1},   // Equipo p/ inf mult polifix
-      {codigo: 'MAT42', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1},       // Equipo p/ soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4}, // Compressa gaze 7,5 x 7,5 (iris)
       {codigo: 70360758, qtde: 1},   // Lâmina de bisturi 11
       {codigo: 70360812, qtde: 1},   // Lâmina de bisturi 15
@@ -1249,6 +1301,43 @@ const pkr_refativa = {
    equipamentos: [
       {codigo: "EQ11", qtde: 1},
       {codigo: "EQ14", qtde: 1}
+   ],
+   medicamentos: [
+      {codigo: 'MED6', qtde: 10, und: 'gts'},
+      {codigo: 'MED45', qtde: 1, und: 'gts'},
+      {codigo: 'MED11', qtde: 1, und: 'com'},
+      {codigo: 90047494, qtde: 0.5, und: 'ml'},
+      {codigo: 'MED9', qtde: 1, und: 'frc'},
+      {codigo: 'MED41', qtde: 3, und: 'gts'},
+      {codigo: 'MED44', qtde: 1, und: 'ml'},
+      {codigo: 'MED10', qtde: 3, und: 'gts'}
+   ],
+   materiais: [
+      {codigo: 'MAT16', qtde: 1, und: 'un'},
+      {codigo: 'MAT27', qtde: 3, und: 'un'},
+      {codigo: 1900241334, qtde: 2, und: 'par'},
+      {codigo: 1900588806, qtde: 2, und: 'un'},
+      {codigo: 'MAT26', qtde: 2, und: 'cx'},
+      {codigo: 1900588440, qtde: 1, und: 'un'},
+      {codigo: 1900119725, qtde: 2, und: 'un'},
+      {codigo: 1900178616, qtde: 1, und: 'kit'},
+      {codigo: 'MAT2', qtde: 2, und: 'un'},
+      {codigo: 90123255, qtde: 1, und: 'bols'},
+      {codigo: 1902758350, qtde: 2, und: 'un'},
+      {codigo: 70223750, qtde: 1, und: 'un'},
+      {codigo: 1900651117, qtde: 1, und: 'un'},
+      {codigo: 1900591572, qtde: 3, und: 'un'},
+      {codigo: 1900588466, qtde: 4, und: 'un'},
+      {codigo: 1900049204, qtde: 1, und: 'un'},
+      {codigo: 1900101265, qtde: 1, und: 'un'},
+      {codigo: 1900588806, qtde: 2, und: 'un'},
+      {codigo: 'MAT23', qtde: 2, und: 'un'}
+   ],
+   sol: [
+      {codigo: 'SL03', qtde: 1, und: 'un'},
+      {codigo: 'SL02', qtde: 1, und: 'un'},
+      {codigo: 'SL11', qtde: 0.5, und: 'un'},
+      {codigo: 'SL10', qtde: 0.5, und: 'un'}
    ]
 };
 const facectomia_antiga = {
@@ -1274,7 +1363,7 @@ const facectomia_antiga = {
       {codigo: 1900180734, qtde: 2, und: "un"},  // Agulha 13x4,5
       {codigo: 1900588440, qtde: 10, und: "un"}, // Cotonete
       {codigo: 70223750, qtde: 1, und: "un"},    // Equipo mult polifix
-      {codigo: 'MAT42', qtde: 1, und: "un"},        // Equipo soro eurofix (não cadastrado)
+      {codigo: 'MAT43', qtde: 1, und: "un"},        // Equipo soro eurofix (não cadastrado)
       {codigo: 1900587745, qtde: 4, und: "pct"}, // Compressa gaze 7,5 x 7,5
       {codigo: 70334307, qtde: 1, und: "un"},    // Injetor p/ implante de LIO
       {codigo: 70360758, qtde: 1, und: "un"},    // Bisturi 11
@@ -1395,7 +1484,7 @@ const tiposCirurgia = [
       procedimentos: []
    },
    {
-   codigo: "EN01",   descricao: "Entrópio",   dados: null, // não definido no array original
+   codigo: "EN01",   descricao: "Entrópio",   dados: entropio, // não definido no array original
    procedimentos: ["PR16", "PR33", "PR27", "PR35", "PR54", "PR56", "PR21"]
    },
    {
@@ -1471,10 +1560,10 @@ document.getElementById('tipoCirurgia').addEventListener('change', function () {
       crm.value = med.crm
    }
 
-   const {medicamentos = [], materiais = [], gases = [], taxas = [], fios = [], equipamentos = [], controlado = []} = cirurgia.dados;
+   const {medicamentos = [], materiais = [], gases = [], taxas = [], fios = [], equipamentos = [], controlado = [], sol=[]} = cirurgia.dados;
 
    // junta tudo que tem qtde
-   const itens = [...medicamentos, ...materiais, ...gases, ...taxas, ...fios, ...equipamentos, ...controlado];
+   const itens = [...medicamentos, ...materiais, ...gases, ...taxas, ...fios, ...equipamentos, ...controlado, ...sol];
    itens.forEach(item => {
       const input = document.querySelector(
        `.input-qty[data-codigo="${item.codigo}"]`
