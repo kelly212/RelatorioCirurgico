@@ -1,232 +1,179 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório Cirúrgico do Centro Oftalmológico</title>
-   <link rel="stylesheet" href="style.css">
+			<meta charset="UTF-8">
+			<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+			<title>Login</title>
+			
+			<style>
+						* { box-sizing: border-box; }
+						
+						body {
+									margin: 0;
+									height: 100vh;
+									background: radial-gradient(circle at top, #0e4c7a, #061e2f);
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-family: Arial, sans-serif;
+						}
+						
+						.card {
+									width: 360px;
+									padding: 30px 25px;
+									border-radius: 24px;
+									background: linear-gradient(
+											145deg,
+											rgba(0,170,255,0.25),
+											rgba(0,80,140,0.25)
+									);
+									backdrop-filter: blur(15px);
+									box-shadow:
+											0 0 2px rgba(0,180,255,.7),
+											inset 0 0 2px rgba(255,255,255,.15);
+									color: #fff;
+						}
+						
+						.avatar {
+									width: 80px;
+									height: 80px;
+									margin: 0 auto 25px;
+									border-radius: 50%;
+									border: 2px solid rgba(255,255,255,.4);
+									display: flex;
+									align-items: center;
+									justify-content: center;
+						}
+						
+						.avatar::before {
+									content: "📷";
+									font-size: 30px;
+						}
+						
+						.field {
+									background: rgba(0,0,0,.25);
+									border-radius: 8px;
+									display: flex;
+									align-items: center;
+									padding: 10px;
+									margin-bottom: 12px;
+						}
+						
+						.field span {
+									margin-right: 8px;
+									opacity: .8;
+						}
+						
+						.field input {
+									flex: 1;
+									background: transparent;
+									border: none;
+									outline: none;
+									color: #fff;
+						}
+						
+						.field input::placeholder {
+									color: rgba(255,255,255,.6);
+						}
+						
+						.toggle {
+									cursor: pointer;
+									font-size: 14px;
+						}
+						
+						.options {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									font-size: 12px;
+									margin: 10px 0 20px;
+						}
+						
+						.options a {
+									color: #7fd3ff;
+									text-decoration: none;
+						}
+						
+						button {
+									width: 100%;
+									padding: 12px;
+									border-radius: 10px;
+									border: none;
+									background: linear-gradient(145deg,#00b4ff,#0077b6);
+									color: #fff;
+									font-weight: bold;
+									letter-spacing: 1px;
+									cursor: pointer;
+									box-shadow: 0 0 15px rgba(0,180,255,.6);
+						}
+						
+						button:hover {
+									opacity: .9;
+						}
+			</style>
 </head>
 <body>
 
-<div class="page" id="report">
-    <div class="header-title">CENTRO OFTALMOLÓGICO DE CARATINGA</div>
-
-     <div class="grid-container">
-        <div class="cell" style="grid-column: span 7;"><label>Paciente:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Categoria:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 4;"><label>Diagnóstico:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 3;"><label>Quarto:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Registro:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Cirurgia:</label>
-           <select id="tipoCirurgia" class="selecao" >
-           </select>
-
-        </div>
-        <div class="cell" style="grid-column: span 2;"><label>Cód.:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Data:</label><input type="date" placeholder="__/__/____"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Cirurgião:</label>
-           <select id="tipoCirurgiao" class="selecao" >
-           </select>
-        </div>
-        <div class="cell" style="grid-column: span 2;"><label>CRM:</label><input type="text" id="crm"></div>
-        <div class="cell" style="grid-column: span 3;"><label>Início:</label><input type="time" id="inicio"></div>
-        <div class="cell" style="grid-column: span 2;"><label>Fim:</label><input type="time" id="fim"></div>
-        <div class="cell" style="grid-column: span 5;"><label>1º Auxiliar:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 2;"><label>CRM:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Duração:</label><input type="text" id="duracao" placeholder="___H ___Min"></div>
-        <div class="cell" style="grid-column: span 5;"><label>2º Auxiliar:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 2;"><label>CRM:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>Anestesia:</label>
-           <!--<input type="text" style="width:30px">-->
-    
-           <select id="tipo" class="selecao">
-              <option value="">Selecione...</option>
-              <option value="1">Local</option>
-              <option value="2">Geral</option>
-              <option value="3">Outra</option>
-           </select>
-        </div>
-        <div class="cell" style="grid-column: span 5;"><label>Anestesista:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 2;"><label>CRM:</label><input type="text"></div>
-        <div class="cell" style="grid-column: span 5;"><label>ASA:</label><input type="text"></div>
-    </div>
-
-    <div class="section-title">Resumo do Ato Cirúrgico</div>
-    <textarea id="resumo" oninput="autoResize(this)"  maxlength="500" " rows="5" style="width: 100%;  border: 1px solid #000; box-sizing: border-box;"></textarea>
-
-   <div class="section-title">BOLETIM DE ANESTESIA</div>
-   <div class="grid-container">
-      <div class="cell" style="grid-column: span 2;"><label>Idade:</label><input type="number"></div>
-      <div class="cell" style="grid-column: span 2;"><label>Peso:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 2;"><label>P.A.:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 2;"><label>Pulso:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 2;"><label>Temp.:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 2;"><label>G. Sang.:</label><input type="text"></div>
-      
-      <div class="cell" style="grid-column: span 6;"><label>Ap. Circulatório:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 6;"><label>Ap. Respiratório:</label><input type="text"></div>
-      
-      <div class="cell" style="grid-column: span 6;"><label>Ap. Digestivo:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 6;"><label>Sistema Nervoso:</label><input type="text"></div>
-      
-      <div class="cell" style="grid-column: span 12;"><label>Anestesias Anteriores:</label><input type="text"></div>
-      
-      <div class="cell" style="grid-column: span 6;"><label>Pré-Anestésico:</label><input type="text"></div>
-      <div class="cell" style="grid-column: span 3;"><label>Hora:</label><input type="time"></div>
-      <div class="cell" style="grid-column: span 3;"><label>Efeito:</label><input type="text"></div>
-   </div>
-   
-   <div class="section-title">Monitoramento Trans-Cirúrgico</div>
-   <div class="anesthesia-monitor">
-      <div class="monitor-grid-container">
-         <div class="icone">
-            <svg width="898" height="564" version="1.1" viewBox="0 0 898 564" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-               <defs>
-                  <pattern id="pattern1627" patternTransform="translate(-.843 -.185)" xlink:href="#smallGrid"/>
-                  <pattern id="smallGrid" width="12" height="12" patternUnits="userSpaceOnUse">
-                     <path d="m12 0h-12v12" fill="none" stroke="#2b2b2b" stroke-width=".8"/>
-                  </pattern>
-                  <pattern id="pattern911" patternTransform="translate(-1 245)" xlink:href="#grid"/>
-                  <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
-                     <path d="M12 0H0V12" fill="none" stroke="#2b2b2b" stroke-width=".8"/>
-                  </pattern>
-               </defs>
-               <g stroke-width="2">
-                  <rect x="1" y="1" width="896" height="246" fill="#fff" stroke="#1f1f1f"/>
-                  <rect x="1" y="39" width="150" height="208" fill="#fff" stroke="#1f1f1f"/>
-                  <rect x="151" y="39.8" width="746" height="150" fill="url(#pattern1627)" stroke="#000"/>
-               </g>
-               <g font-family="Arial, Helvetica, sans-serif">
-                  <text x="17" y="27" fill="#1a1a1a" font-size="22px" font-weight="700">HORA</text>
-                  <g transform="translate(-1,-1)" fill="#1a1a1a" font-size="16px" font-weight="700">
-                     <text x="182" y="28">15 30 45</text>
-                     <text x="334" y="28">15 30 45</text>
-                     <text x="486" y="28">15 30</text>
-                     <text x="630" y="28">15 30 45</text>
-                     <text x="792" y="28">15 30 45</text>
-                  </g>
-                  <g transform="translate(22.3 -17.8)" fill="#2a2a2a" font-size="13px">
-                     <text x="16" y="72">HALOG</text>
-                     <text x="16" y="90">OXIGÊNIO</text>
-                     <text x="16" y="108">PROTOXIDO</text>
-                     <circle cx="62" cy="128" r="3" fill="#1f1f1f"/>
-                     <g font-size="12px">
-                        <text x="102" y="128">100</text>
-                        <text x="102" y="146">90</text>
-                        <text x="102" y="164">80</text>
-                        <text x="102" y="182">60</text>
-                     </g>
-                     <text transform="rotate(-90,40,182)" x="40" y="182" font-size="14px">SpO2</text>
-                  </g>
-               </g>
-               <g transform="matrix(.854 0 0 1 21.2 -1)" fill="none" stroke="#1f1f1f" stroke-width="2.16">
-                  <rect x="2" y="190" width="150" height="58"/>
-                  <line x1="2" x2="152" y1="210" y2="210"/>
-                  <line x1="2" x2="152" y1="230" y2="230"/>
-                  <line x1="-24" x2="151" y1="189" y2="189" fill="none" stroke="#1f1f1f"/>
-               </g>
-               <rect x="111" y="247" width="786" height="316" fill="url(#pattern911)" stroke="#1f1f1f" stroke-width="2"/>
-               <g transform="translate(28.9 235)" fill="#1f1f1f" font-family="Arial, Helvetica, sans-serif" font-size="13px">
-                  <text transform="rotate(-90,14,210)" x="14" y="210">V.P.A. Máx.</text>
-                  <text transform="rotate(-90,32,210)" x="32" y="210">V.P.A. Min.</text>
-               </g>
-               <g transform="translate(61.7 -12.5)" fill="#1f1f1f" font-family="Arial, Helvetica, sans-serif" font-size="14px">
-                  <text transform="rotate(-90)" x="-546.82428" y="-18.560495">Pulso</text>
-                  <text transform="rotate(-90)" x="-546.82428" y="3.4395044">Resp.</text>
-               </g>
-               <text transform="rotate(-90)" x="-332.28937" y="59.979687" fill="#1f1f1f" font-family="Arial, Helvetica, sans-serif" font-size="14px" font-weight="700">ETCO₂</text>
-               <text transform="rotate(-90)" x="-244.31279" y="17.184856" fill="#1f1f1f" font-family="Arial, Helvetica, sans-serif" font-size="14px">Liquidos</text>
-               <g>
-                  <text transform="scale(1.07 .935)" x="100.93198" y="272.54245" fill="#000000" font-family="Arial" font-size="9.12px" letter-spacing="0px" text-anchor="end" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="100.93198" y="272.54245" text-align="end">40</tspan><tspan x="100.93198" y="283.94516" text-align="end"/><tspan x="100.93198" y="295.58279" text-align="end">30</tspan><tspan x="100.93198" y="306.98547" text-align="end"/><tspan x="100.93198" y="318.62311" text-align="end">20</tspan><tspan x="100.93198" y="330.02582" text-align="end"/><tspan x="100.93198" y="341.66345" text-align="end">220</tspan><tspan x="100.93198" y="353.06616" text-align="end"/><tspan x="100.93198" y="364.7038" text-align="end">200</tspan><tspan x="100.93198" y="376.10648" text-align="end"/><tspan x="100.93198" y="387.74411" text-align="end">180</tspan><tspan x="100.93198" y="399.14682" text-align="end"/><tspan x="100.93198" y="410.78445" text-align="end">160</tspan><tspan x="100.93198" y="422.18716" text-align="end"/><tspan x="100.93198" y="433.8248" text-align="end">140</tspan><tspan x="100.93198" y="445.22748" text-align="end"/><tspan x="100.93198" y="456.86511" text-align="end">120</tspan><tspan x="100.93198" y="468.26782" text-align="end"/><tspan x="100.93198" y="479.90546" text-align="end">100</tspan><tspan x="100.93198" y="491.30814" text-align="end"/><tspan x="100.93198" y="502.94577" text-align="end">80</tspan><tspan x="100.93198" y="514.34851" text-align="end"/><tspan x="100.93198" y="525.98615" text-align="end">60</tspan><tspan x="100.93198" y="537.38879" text-align="end"/><tspan x="100.93198" y="549.02643" text-align="end">40</tspan><tspan x="100.93198" y="560.42914" text-align="end"/><tspan x="100.93198" y="572.06677" text-align="end">20</tspan><tspan x="100.93198" y="583.46948" text-align="end"/><tspan x="100.93198" y="595.10712" text-align="end">00</tspan></text>
-                  <ellipse cx="39.3" cy="483" rx="4.94" ry="5.11" fill="#fff" stroke="#000" stroke-linejoin="round" stroke-width="1.13"/>
-                  <ellipse cx="63.7" cy="484" rx="4.94" ry="5.11" fill="#fff" stroke="#000" stroke-linejoin="round" stroke-width="1.13"/>
-               </g>
-            </svg>
-         </div>
-     
-      </div>
-      
-      <div class="agents-side">
-         <div class="agents-box">AGENTES</div>
-         <div class="tech-details">
-            <div class="cell"><label>Posição:</label><input type="text"></div>
-            <div class="cell"><label>Técnica:</label><input type="text"></div>
-            <div class="cell"><label>Entubação:</label><input type="text"></div>
-            <div class="cell"><label>Condições:</label><input type="text"></div>
-         </div>
-      </div>
-   </div>
-   
-   <div class="section-title">Observações</div>
-   <textarea style="width: 100%" rows="5"></textarea>
-   
-   <div class="footer-sigs">
-      <div class="sig-line">Assinatura/Enfermeiro(a)</div>
-      <div class="sig-line">Assinatura/Anestesista</div>
-      <div class="sig-line">Assinatura-Carimbo/Cirurgião</div>
-   </div>
-   
-   <section class="sessao_medicamento">
-      <div class="section-title">Relatório de Materiais e Medicamentos</div>
-      <div class="inventory-container">
-         <div>
-            <table>
-               <tr><th colspan="3">MEDICAMENTOS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="med-table"></tbody>
-               <tr><th colspan="3" style="background:#323232">CONTROLADOS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="control-table"></tbody>
-			   
-            </table>
-         </div>
-      
-         <div>
-            <table>
-               <tr><th colspan="3">MATERIAIS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="mat-table"></tbody>
-               
-               <tr><th colspan="3" style="background:#323232">TAXAS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="taxas-table"></tbody>
-               <tr><th colspan="3" style="background:#323232">OUTROS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="outros-table"></tbody>
-            </table>
-         </div>
-      
-         <div>
-            <table>
-               <tr><th colspan="3" style="background:#323232">FIOS CIRÚRGICOS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="fios-table"></tbody>
-               <tr><th colspan="3" style="background:#323232">GASES</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="gases-table"></tbody>
-               <tr><th colspan="3" style="background:#323232">EQUIPAMENTOS ESPECIAIS</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="equip-table"></tbody>
-   
-   
-               <tr><th colspan="3">SOLUÇÕES</th></tr>
-               <tr><th>Descrição</th><th>Qtd</th><th>Un</th></tr>
-               <tbody id="sol-table"></tbody>
-            </table>
-         </div>
-      </div>
-
-   <div class="footer-sigs">
-      <div class="sig-line">Assinatura/Enfermeiro(a)</div>
-      <div class="sig-line">Assinatura/Anestesista</div>
-      <div class="sig-line">Assinatura-Carimbo/Cirurgião</div>
-   </div>
-   </section>
+<div class="card">
+			<div class="field">
+						<span>👤</span>
+						<input id="user" placeholder="Email" value="dks.shalon@gmail.com">
+			</div>
+			
+			
+			<div class="field">
+						<span>🔒</span>
+						<input id="pass" type="password" placeholder="Password" value="m@sqZq3UA4LdqJ6">
+						<span class="toggle" onclick="toggle()">👁</span>
+			</div>
+			
+			<button onclick="login()">LOGIN</button>
 </div>
 
-<div class="no-print" style="position: fixed; bottom: 20px; right: 20px;">
-    <button onclick="window.print()" style="padding: 15px 25px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">IMPRIMIR / GERAR PDF</button>
-</div>
-<script src="script.js"></script>
+
+
+<script>
+  
+   function toggle() {
+      const p = document.getElementById('pass');
+      p.type = p.type === 'password' ? 'text' : 'password';
+   }
+
+   // m@sqZq3UA4LdqJ6
+
+   async function login() {
+      console.log("login");
+      const email = document.getElementById('user').value;
+      const senha = document.getElementById('pass').value;
+
+      const res = await fetch('https://shelliack.us.auth0.com/oauth/token', {
+         method: 'POST',
+         headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify({
+            grant_type: 'password',
+            // grant_type:"client_credentials",
+            username: email,
+            password: senha,
+            client_id: 'OOOS41gjNdG63T1a8h4L91uBJqwxvVEZ',
+            audience: 'https://shelliack.us.auth0.com/api/v2/',
+            scope: 'openid profile email'
+         })
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (data.access_token) {
+         console.log("if");
+         sessionStorage.setItem('token', data.access_token);
+         window.location.href = 'principal.html';
+      } else {
+         alert('Login inválido');
+      }
+   }
+
+
+</script>
+
 </body>
 </html>
