@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 			<meta charset="UTF-8">
-			<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
 			<title>Login</title>
 			
 			<style>
@@ -11,7 +10,7 @@
 						body {
 									margin: 0;
 									height: 100vh;
-									background: radial-gradient(circle at top, #0e4c7a, #061e2f);
+									background: radial-gradient(circle at top, #3c3f41, #000000);
 									display: flex;
 									align-items: center;
 									justify-content: center;
@@ -24,12 +23,12 @@
 									border-radius: 24px;
 									background: linear-gradient(
 											145deg,
-											rgba(0,170,255,0.25),
-											rgba(0,80,140,0.25)
+											rgba(0, 0, 0, 0.5),
+											rgba(43, 45, 48, 0.5)
 									);
 									backdrop-filter: blur(15px);
 									box-shadow:
-											0 0 2px rgba(0,180,255,.7),
+											0 0 2px rgba(38, 40, 46, 0.7),
 											inset 0 0 2px rgba(255,255,255,.15);
 									color: #fff;
 						}
@@ -99,12 +98,12 @@
 									padding: 12px;
 									border-radius: 10px;
 									border: none;
-									background: linear-gradient(145deg,#00b4ff,#0077b6);
+									background: linear-gradient(145deg, #07925d, #11b6aa);
 									color: #fff;
 									font-weight: bold;
 									letter-spacing: 1px;
 									cursor: pointer;
-									box-shadow: 0 0 15px rgba(0,180,255,.6);
+									box-shadow: 0 0 15px rgba(113, 113, 113, 0.6);
 						}
 						
 						button:hover {
@@ -115,63 +114,80 @@
 <body>
 
 <div class="card">
-			<div class="field">
-						<span>👤</span>
-						<input id="user" placeholder="Email" value="dks.shalon@gmail.com">
-			</div>
-			
+			<!--<div class="field">-->
+						<!--<span>👤</span>-->
+						<!--<input id="user" placeholder="Email" value="dks.shalon@gmail.com">-->
+			<!--</div>-->
 			
 			<div class="field">
 						<span>🔒</span>
-						<input id="pass" type="password" placeholder="Password" value="m@sqZq3UA4LdqJ6">
+						<input id="pass" type="password" placeholder="Password">
 						<span class="toggle" onclick="toggle()">👁</span>
 			</div>
 			
-			<button onclick="login()">LOGIN</button>
+			<button onclick="login()">ENTRAR</button>
+
 </div>
 
 
 
 <script>
-  
+
    function toggle() {
       const p = document.getElementById('pass');
       p.type = p.type === 'password' ? 'text' : 'password';
    }
 
-   // m@sqZq3UA4LdqJ6
+      // const email = document.getElementById('user').value;
+  
+      async function hashPassword(password) {
+         // Converte a senha para um array de bytes
+         const encoder = new TextEncoder();
+         const data = encoder.encode(password);
 
-   async function login() {
-      console.log("login");
-      const email = document.getElementById('user').value;
-      const senha = document.getElementById('pass').value;
+         // Gera o hash SHA-256
+         const hashBuffer = await crypto.subtle.digest('SHA-256', data);
 
-      const res = await fetch('https://shelliack.us.auth0.com/oauth/token', {
-         method: 'POST',
-         headers: {'Content-Type': 'application/json'},
-         body: JSON.stringify({
-            grant_type: 'password',
-            // grant_type:"client_credentials",
-            username: email,
-            password: senha,
-            client_id: 'OOOS41gjNdG63T1a8h4L91uBJqwxvVEZ',
-            audience: 'https://shelliack.us.auth0.com/api/v2/',
-            scope: 'openid profile email'
-         })
-      });
+         // Converte o hash para string hexadecimal
+         const hashArray = Array.from(new Uint8Array(hashBuffer));
+         const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-      const data = await res.json();
-      console.log(data);
-
-      if (data.access_token) {
-         console.log("if");
-         sessionStorage.setItem('token', data.access_token);
-         window.location.href = 'principal.html';
-      } else {
-         alert('Login inválido');
+         return hashHex;
       }
+
+   function initializeStorage() {
+         sessionStorage.setItem('hash', 'cd07c536b419e7f6da570f08c36cfbc31a795237722bd8e79b4c26e4c77a021d');
    }
 
+   function criarTokenSessao() {
+      return crypto.randomUUID();
+   }
+   
+   initializeStorage();
+   
+   async function login() {
+      
+      const password = document.getElementById('pass').value;
+      console.log(password);
+      // Validação básica
+      if (!password) {
+         alert('Por favor, preencha a senha');
+         return;
+      }
+
+      
+      // Gera o hash da senha
+      const hashedPassword = await hashPassword(password);
+      const hash = sessionStorage.getItem('hash');
+
+      // Verifica as credenciais
+      if (hash === hashedPassword) {
+         sessionStorage.setItem("sessionToken", criarTokenSessao());
+									window.location.href = 'principal.html';
+      } else {
+         alert('Senha incorreta');
+      }
+   }
 
 </script>
 

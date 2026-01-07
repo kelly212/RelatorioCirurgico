@@ -1599,3 +1599,7 @@ function gerarDescricaoFormatada(codigosProcedimentos) {
     .map((proc, index) => `${proc.descricao}`)
     .join('\n');
 }
+
+
+
+
